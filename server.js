@@ -1,6 +1,8 @@
+//Imports neccessary for application
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 
+// Server and database connection specifics
 const server = mysql.createConnection({
     host: 'localhost',
     port: 3306,
@@ -9,6 +11,7 @@ const server = mysql.createConnection({
     database: 'company_db',
 });
 
+//Initialization of the server
 server.connect((err) => {
     if(err) throw err;
     console.log('Welcome to the company database!');
@@ -16,6 +19,7 @@ server.connect((err) => {
     init();
 });
 
+//Function to initialize the app and present users with different choices
 function init() {
     inquirer.prompt({
             name: 'options',
@@ -31,6 +35,7 @@ function init() {
                 'Update An Employee'
             ],
         })
+        //Switch case to execute function behind user choice
         .then((choice) => {
             switch (choice.action) {
                 case 'View All Departments':
