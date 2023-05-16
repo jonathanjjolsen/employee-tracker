@@ -20,8 +20,8 @@ server.connect((err) => {
 });
 
 //Function to initialize the app and present users with different choices
-function init() {
-    inquirer.prompt({
+async function init() {
+    const choice = await inquirer.prompt({
             name: 'options',
             type: 'list',
             message: 'Select and option.',
@@ -36,8 +36,7 @@ function init() {
             ],
         })
         //Switch case to execute function behind user choice
-        .then((choice) => {
-            switch (choice.action) {
+            switch (choice.options) {
                 case 'View All Departments':
                     viewDepartments();
                     break;
@@ -60,11 +59,15 @@ function init() {
                     updateEmployee();
                     break;
             }
-        })
 }
 
 function viewDepartments() {
-
+    const pull = 'SELECT * FROM departments;';
+    server.query(pull, (err, res) => {
+        if(err) throw err;
+        console.table(res);
+        init();
+    })
 }
 
 function viewRoles() {
