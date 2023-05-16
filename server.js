@@ -17,8 +17,7 @@ server.connect((err) => {
 });
 
 function init() {
-    inquirer
-        .prompt({
+    inquirer.prompt({
             name: 'options',
             type: 'list',
             message: 'Select and option.',
@@ -32,4 +31,57 @@ function init() {
                 'Update An Employee'
             ],
         })
-};
+        .then((choice) => {
+            switch (choice.action) {
+                case 'View All Departments':
+                    viewDepartments();
+                    break;
+                case 'View All Roles':
+                    viewRoles();
+                    break;
+                case 'View All Employees':
+                    viewEmployees();
+                    break;
+                case 'Add A Department':
+                    addDepartment();
+                    break;
+                case 'Add A Role':
+                    addRole();
+                    break;
+                case 'Add An Employee':
+                    addEmployee();
+                    break;
+                case 'Update An Employee':
+                    updateEmployee();
+                    break;
+            }
+        })
+}
+
+function viewDepartments() {
+
+}
+
+function viewRoles() {
+
+}
+
+function viewEmployees() {
+
+}
+
+function addDepartment() {
+
+}
+
+function addRole() {
+
+}
+
+function addEmployee() {
+
+}
+
+function updateEmployee() {
+
+}
