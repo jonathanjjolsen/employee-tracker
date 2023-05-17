@@ -62,7 +62,7 @@ async function init() {
 }
 
 function viewDepartments() {
-    const pull = 'SELECT * FROM departments;';
+    const pull = 'SELECT * FROM departments';
     server.query(pull, (err, res) => {
         if(err) throw err;
         console.table(res);
@@ -71,7 +71,12 @@ function viewDepartments() {
 }
 
 function viewRoles() {
-
+    const pull = 'SELECT * FROM roles';
+    server.query(pull, (err, res) => {
+        if (err) throw err;
+        console.table(res);
+        init();
+    })
 }
 
 function viewEmployees() {
