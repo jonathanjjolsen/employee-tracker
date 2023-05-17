@@ -71,7 +71,7 @@ function viewDepartments() {
 }
 
 function viewRoles() {
-    const pull = 'SELECT * FROM roles';
+    const pull = 'SELECT title, department_id, salary, departments.department_name FROM roles JOIN departments ON roles.department_id = departments.id';
     server.query(pull, (err, res) => {
         if (err) throw err;
         console.table(res);
@@ -80,7 +80,12 @@ function viewRoles() {
 }
 
 function viewEmployees() {
-
+    const pull = 'SELECT first_name, last_name, roles.title FROM employees JOIN roles ON employees.role_id = roles.id';
+    server.query(pull, (err, res) => {
+        if(err) throw err;
+        console.table(res);
+        init();
+    })
 }
 
 function addDepartment() {
