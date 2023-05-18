@@ -89,8 +89,20 @@ function viewEmployees() {
 }
 
 function addDepartment() {
-
-}
+    inquirer.prompt({
+        name: 'deptAdd',
+        type: 'input',
+        message: 'Type new department below:'
+    })
+    .then((userResponse) => {
+        const pull = `INSERT INTO departments (department_name) VALUES ('${userResponse.deptAdd}')`;
+        server.query(pull, (err, res) => {
+            if(err) throw err;
+            console.log(`${userResponse.deptAdd} has been added. Please navigate to departments and verify creation.`)
+            init();
+        });
+    });
+};
 
 function addRole() {
 
