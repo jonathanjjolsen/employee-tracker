@@ -134,7 +134,32 @@ function addRole() {
   }
         
         function addEmployee() {
-            
+           inquirer.prompt([
+            {
+                type: 'input',
+                name: 'firstName',
+                message: 'Please enter the employees first name:'
+            },
+            {
+                type: 'input',
+                name: 'lastName',
+                message: 'Please enter the employees last name:'
+            },
+            {
+                type: 'input',
+                name: 'role',
+                message: 'Please enter the role ID#:'
+            }
+           ])
+           .then((userResponse) => {
+            const update = `INSERT INTO employees (first_name, last_name, role_id) VALUES (?, ?, ?)`;
+            server.query(update, [
+                userResponse.firstName,
+                userResponse.lastName,
+                userResponse.role
+            ]);
+            init();
+           })
         }
         
         function updateEmployee() {
