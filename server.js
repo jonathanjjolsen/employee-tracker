@@ -95,23 +95,48 @@ function addDepartment() {
         message: 'Type new department below:'
     })
     .then((userResponse) => {
-        const pull = `INSERT INTO departments (department_name) VALUES ('${userResponse.deptAdd}')`;
-        server.query(pull, (err, res) => {
+        const update = `INSERT INTO departments (department_name) VALUES ('${userResponse.deptAdd}')`;
+        server.query(update, err => {
             if(err) throw err;
-            console.log(`${userResponse.deptAdd} has been added. Please navigate to departments and verify creation.`)
+            console.log(`A new department "${userResponse.deptAdd}" has been added. Please navigate to the departments tab and verify creation.`)
             init();
         });
     });
 };
 
 function addRole() {
-
-}
-
-function addEmployee() {
-
-}
-
-function updateEmployee() {
-
-}
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'role',
+            message: 'Please enter a name for the new role:'
+        },
+        {
+            type: 'input',
+            name: 'department',
+            message: 'Please enter the respective id number for the department:',
+        },
+        {
+            type: 'input',
+            name: 'salary',
+            message: 'Please enter a salary for this role:'
+        }
+    ])
+    .then((userResponse) => {
+        const update = `INSERT INTO roles (title, department_id, salary) VALUES (?, ?, ?)`;
+        server.query(update, [
+            userResponse.role,
+            userResponse.department,
+            userResponse.salary
+        ]);
+        init();
+    })
+  }
+        
+        function addEmployee() {
+            
+        }
+        
+        function updateEmployee() {
+            
+        }
