@@ -1,3 +1,4 @@
+-- Seeds is used to populate the database with values for a reference point when creating functions
 INSERT INTO departments(department_name)
 VALUES
 ('Board of Directors'),
