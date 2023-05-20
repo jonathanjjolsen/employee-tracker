@@ -14,3 +14,6 @@ This application is a CLI content management system for managing a company's emp
 
 ## Repository Link
 https://github.com/jonathanjjolsen/employee-tracker
+
+## Video Walkthrough Link
+https://drive.google.com/file/d/15xvNCeVzPntg6dcq11yN6oquwcXIojwm/view
