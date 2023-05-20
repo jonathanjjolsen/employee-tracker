@@ -1,4 +1,4 @@
-# employee-tracker
+# Employee Database Tracker
 
 ## Description
 This application is a CLI content management system for managing a company's employee database. The user can view departments, employees and the role to which each emplyee belongs. They can also add new items to each of the aformentioned sections as well as update existing employees. During the process of building this project, I gained a very intimate knowledge of how querying a database is performed. This was by far the most challenging project I have worked on thus far, but happy to say that I've finally completed it.
